@@ -2,6 +2,8 @@
 
 A couple scripts to scrape Twitter using the official APIs
 
+Note: you must obtain your own Twitter developer credentials (consumer keys and access tokens). See [https://developer.twitter.com](https://developer.twitter.com). 
+
 ## Contents 
 
 * `scrape_user_tweets.py`: scrape a specific user's tweets for the past *n* days

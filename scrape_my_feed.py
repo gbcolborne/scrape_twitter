@@ -67,7 +67,7 @@ except tweepy.error.TweepError as e:
  
 if not HIT_THEN:
     msg = "WARNING: scraper can not reach all the way to the morning of the day {} prior to today.".format(args.nb_days)
-    msg += " Maybe this is due to rate limiting of the user_timeline API, or the max number of tweets accessible throught that API."
+    msg += " The reason is likely that the home_timeline API only goes back about 800 tweets (or less)."
     print(msg)
  
 print("\nNb statuses collected: {}".format(len(statuses)))

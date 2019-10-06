@@ -4,6 +4,9 @@
 # File containing my own Twitter API credentials 
 my_credentials.txt
 
+# File containing the user names whose tweets I scrape
+paper_repo_user_names.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

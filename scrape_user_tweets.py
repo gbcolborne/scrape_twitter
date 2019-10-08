@@ -92,9 +92,10 @@ for name, tweets in name_to_tweets.items():
 print("\nTotal nb tweets collected: {}".format(sum(len(t) for n,t in name_to_tweets.items())))
  
 # Write (pretty)
+all_tweets = []
+for user_name, tweets in name_to_tweets.items():
+    all_tweets += tweets
 with open(args.path_output, "w") as f:
-    for user_name, tweets in name_to_tweets.items():
-        if len(tweets):
-            json.dump(tweets, f, sort_keys=True, indent=2)
+    json.dump(all_tweets, f, sort_keys=True, indent=2)
     
 print("Wrote tweets --> {}".format(args.path_output))

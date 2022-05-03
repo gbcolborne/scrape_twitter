@@ -1,6 +1,5 @@
 import os, sys, json, datetime, time, argparse
 import tweepy
-from tweepy import OAuthHandler
 import utils
  
 """
@@ -32,9 +31,9 @@ def scrape_user_timeline(api, user_name, max_past, verbose=True):
                 now = utils.datetime_to_short_timestamp(now)
                 then = utils.datetime_to_short_timestamp(then)
                 print("{}: got status from {}.".format(now, then))
-    except tweepy.error.TweepError as e:
-        print(e)
-        print("Scraping interrupted")
+    except Exception as e:
+        print("\nScraping interrupted")
+        print(e+"\n")
     if not HIT_THEN:
         msg = "WARNING: scraper can not reach all the way back to target date."
         msg += " Maybe this is due to rate limiting of the user_timeline API," 
@@ -66,9 +65,9 @@ then = now - delta
 that_morning = datetime.datetime(then.year, then.month, then.day, hour=12, tzinfo=datetime.timezone.utc)
  
 # Get API instance. Make the API wait when it hits rate limits.
-auth = OAuthHandler(cred["consumer_key"], cred["consumer_secret"])
+auth = tweepy.OAuthHandler(cred["consumer_key"], cred["consumer_secret"])
 auth.set_access_token(cred["access_token"], cred["access_secret"])
-api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
+api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Get user names
 user_names = []
